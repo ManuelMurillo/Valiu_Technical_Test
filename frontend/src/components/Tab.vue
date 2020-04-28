@@ -51,7 +51,7 @@ export default {
       this.tab_.name = this.name_input;
       //   this.name_input_edit = null;
       this.edit_value = false;
-      this.$store.commit("EDIT_TAB", this.tab_,this.index_);
+      this.$store.commit("EDIT_TAB", this.tab_, this.index_);
     },
     delete_tab: function() {
       this.$store.commit("DELETE_TAB", this.index_);

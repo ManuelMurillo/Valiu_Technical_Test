@@ -16,6 +16,14 @@
 // @ is an alias to /src
 
 import AllTabs from "@/components/AllTabs.vue";
+import socket from "../services";
+import store from "../store";
+
+socket.on("Tabs", data => {
+  console.log(data);
+  store.commit("SET_TABS", data);
+  //socket.emit("my other event", { my: "data" });
+});
 
 export default {
   name: "Home",

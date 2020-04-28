@@ -29,7 +29,21 @@ server.listen(port);
 server.on("error", onError);
 server.on("listening", onListening);
 
+/**
+ * websocket
+ */
 
+const io = require("socket.io")(server);
+
+io.on("connection", socket => {
+  
+  console.log("Client connected with ID: " + socket.id);
+  socket.emit("Tabs",[]);
+  socket.on("Tabs", data => {
+    console.log(socket.id + " : " + JSON.stringify(data));
+    socket.broadcast.emit("Tabs", data);
+  });
+});
 
 /**
  * Normalize a port into a number, string, or false.

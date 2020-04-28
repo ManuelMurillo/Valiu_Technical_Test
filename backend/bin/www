@@ -21,6 +21,8 @@ app.set("port", port);
 
 var server = http.createServer(app);
 
+app.io.attach(server);
+
 /**
  * Listen on provided port, on all network interfaces.
  */
@@ -30,20 +32,12 @@ server.on("error", onError);
 server.on("listening", onListening);
 
 /**
- * websocket
+ * Socket.io
  */
 
-const io = require("socket.io")(server);
+var io     = app.io
+io.attach( server );
 
-io.on("connection", socket => {
-  
-  console.log("Client connected with ID: " + socket.id);
-  socket.emit("Tabs",[]);
-  socket.on("Tabs", data => {
-    console.log(socket.id + " : " + JSON.stringify(data));
-    socket.broadcast.emit("Tabs", data);
-  });
-});
 
 /**
  * Normalize a port into a number, string, or false.

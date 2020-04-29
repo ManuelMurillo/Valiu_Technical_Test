@@ -17,10 +17,15 @@ const TabSchemma = new Schemma(
   }
 );
 
-// const TabsSchemma = new Schemma({
-//   Tabs: [TabSchemma]
-// });
+const TabsSchemma = new Schemma(
+  {
+    Tabs: [TabSchemma]
+  },
+  {
+    timestamps: true
+  }
+);
 
-var Tabs = mongoose.model("Actividad", TabSchemma);
+var Tabs = mongoose.model("Actividad", TabsSchemma);
 
 module.exports = Tabs;

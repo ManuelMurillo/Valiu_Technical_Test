@@ -7,8 +7,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 
-const url = 'mongodb://user:123456@localhost:27017/Tabs?authSource=admin';
-// const url = 'mongodb://user:123456@mongo-service:27017/Tabs?authSource=admin';
+// const url = 'mongodb://user:123456@localhost:27017/Tabs?authSource=admin';
+ const url = 'mongodb://user:123456@mongo-service:27017/Tabs?authSource=admin';
 const connect = mongoose.connect(url ,{ useNewUrlParser: true });
 
 connect.then((db)=>{

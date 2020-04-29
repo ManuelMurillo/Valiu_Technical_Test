@@ -6,23 +6,18 @@
     <span v-show="!edit_value" class="md-list-item-text">{{ tab_.name }}</span>
     <md-field v-show="edit_value">
       <md-input v-model="name_input"></md-input>
+      <md-button v-show="edit_value" @click="edit_tab()">
+        Actualizar
+      </md-button>
+      <md-button v-show="edit_value" @click="edit()">
+        Cancelar
+      </md-button>
     </md-field>
-
-    <md-button v-show="!edit_value" class="md-icon-button" @click="edit()">
-      <md-icon>edit</md-icon>
+    <md-button v-show="!edit_value" @click="edit()">
+      Editar
     </md-button>
-    <md-button
-      v-show="!edit_value"
-      class="md-icon-button"
-      @click="delete_tab()"
-    >
-      <md-icon>delete</md-icon>
-    </md-button>
-    <md-button v-show="edit_value" class="md-icon-button" @click="edit_tab()">
-      <md-icon>check</md-icon>
-    </md-button>
-    <md-button v-show="edit_value" class="md-icon-button" @click="edit()">
-      <md-icon>close</md-icon>
+    <md-button v-show="!edit_value" @click="delete_tab()">
+      Borrar
     </md-button>
   </md-list-item>
 </template>

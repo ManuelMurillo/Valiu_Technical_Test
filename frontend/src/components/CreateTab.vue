@@ -1,14 +1,10 @@
 <template>
-  <md-field>
-    <label class="md-title">Añadir Etiqueta</label>
-    <md-input v-model="name_input"></md-input>
-    <md-button
-      class="md-icon-button"
-      :disabled="!name_input"
-      @click="create_tab()"
-    >
-      <md-icon>add</md-icon>
-    </md-button>
+  <md-field md-inline>
+    <label>Añadir Etiqueta</label>
+    <md-input
+      v-model="name_input"
+      @keyup.enter.native="create_tab()"
+    ></md-input>
   </md-field>
 </template>
 
@@ -20,13 +16,15 @@ export default {
   }),
   methods: {
     create_tab: function() {
-      const tab_ = {
-        name: this.name_input,
-        color: "#" + ((Math.random() * 0xffffff) << 0).toString(16)
-      };
-      this.$store.commit("CREATE_TAB", tab_);
-      console.log(this.$store.getters.getAllTabs);
-      this.name_input = null;
+      if (this.name_input !== "") {
+        const tab_ = {
+          name: this.name_input,
+          color: "#" + ((Math.random() * 0xffffff) << 0).toString(16)
+        };
+        this.$store.commit("CREATE_TAB", tab_);
+        console.log(this.$store.getters.getAllTabs);
+        this.name_input = "";
+      }
     }
   }
 };

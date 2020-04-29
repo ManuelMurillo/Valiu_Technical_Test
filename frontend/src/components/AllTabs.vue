@@ -5,7 +5,7 @@
         <CreateTab />
       </md-list-item>
       <Tab
-        v-for="(item, index) in read"
+        v-for="(item, index) in tabs"
         :key="index"
         :tab_="item"
         :index_="index"
@@ -20,24 +20,13 @@ import CreateTab from "@/components/CreateTab.vue";
 
 export default {
   name: "AllTabs",
-  components: {
-    Tab,
-    CreateTab
-  },
   props: {
     tabs: Array
   },
-  data: () => ({
-    tabs_: []
-  }),
-  computed: {
-    read: function() {
-      console.log(this.$store.getters.getAllTabs);
-      return this.$store.getters.getAllTabs;
-    }
-  },
-
-  methods: {}
+  components: {
+    Tab,
+    CreateTab
+  }
 };
 </script>
 

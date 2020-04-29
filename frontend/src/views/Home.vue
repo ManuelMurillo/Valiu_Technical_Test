@@ -6,7 +6,7 @@
       </md-card-header>
 
       <md-card-content>
-        <AllTabs />
+        <AllTabs :tabs="Tabs" />
       </md-card-content>
     </md-card>
   </div>
@@ -30,7 +30,13 @@ export default {
   components: {
     AllTabs
   },
-  methods: {}
+  methods: {},
+  computed: {
+    Tabs: function() {
+      console.log(this.$store.getters.getAllTabs);
+      return this.$store.getters.getAllTabs;
+    }
+  }
 };
 </script>
 
